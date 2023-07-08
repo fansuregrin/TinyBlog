@@ -1,0 +1,24 @@
+{% extends 'install/base.html' %}
+
+{% block title %}
+<title>Notice - TinyBlog</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex black-bg" id="install-banner">
+  <div class="row">
+    <div class="container text-center mt-5" id="install-title">
+      <div class="text-center mb-3">
+        <img src="/static/images/logo.png" class="rounded" alt="logo" id="blog-logo">
+      </div>
+      <h1 class="mb-3">TinyBlog</h1>
+      <p>Tiny but complete, like a sparrow with all its organs.</p>
+    </div>
+  </div>
+</div>
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="alert alert-success col-9" role="alert">
+    <p>Successfully installed! Please restart your blog!</p>
+  </div>
+</div>
+{% endblock %}

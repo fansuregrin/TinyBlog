@@ -1,0 +1,130 @@
+{% extends 'install/base.html' %}
+
+{% block title %}
+<title>Installation - TinyBlog</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex" id="install-banner">
+  <div class="row">
+    <div class="container text-center mt-5" id="install-title">
+      <div class="text-center mb-3">
+        <img src="/static/images/logo.png" class="rounded" alt="logo" id="blog-logo">
+      </div>
+      <h1 class="mb-3">TinyBlog</h1>
+      <p>Tiny but complete, like a sparrow with all its organs.</p>
+    </div>  
+    <div class="container text-center mb-5 mt-3" id="install-progress">
+      <div class="row align-items-center">
+        <div class="col" id="install-step-1">
+          <i class="bi bi-1-circle"> Welcome</i>
+        </div>
+        <div class="col" id="install-step-2">
+          <i class="bi bi-2-circle"> Configure database</i>
+        </div>
+        <div class="col" id="install-step-3">
+          <i class="bi bi-3-circle"> Configure admin user</i>
+        </div>
+        <div class="col" id="install-step-4">
+          <i class="bi bi-4-circle"> Successfully installed</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "install/install_step_1.html" %}
+<script>
+function get_step_2() {
+  $.ajax({
+    url: '/install',
+    type: 'post',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      'request_type': 'refresh_step_page',
+      'current_step': 1
+    }),
+    success: function(response){
+      if (response.status) {
+        $('#install-step-1').css('color', '#a0a0a0');
+        $('#install-step-2').css('color', 'white');
+        $('#install-content').replaceWith(response.html);
+        $('#step-button').click(get_step_3);
+      }
+    }
+  })
+}
+
+function get_step_3() {
+  var db_type = $('#databaseType').val();
+  if (db_type == 'sqlite3') {
+    db_config = {
+      'db_type': db_type,
+      'db_filename': $('#dbFileName').val()
+    };
+  } else if (db_type == 'mysql') {
+    db_config = {
+      'db_type': db_type,
+      'db_address': $('#dbAddress').val(),
+      'db_username': $('#dbUsername').val(),
+      'db_password': $('#dbPassword').val(),
+      'db_name': $('#dbName').val(),
+      'db_charset': $('#dbCharset').val()
+    };
+  }
+  $.ajax({
+    url: '/install',
+    type: 'post',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      'request_type': 'refresh_step_page',
+      'current_step': 2,
+      'db_config': db_config
+    }),
+    success: function(response){
+      if (response.status) {
+        $('#install-step-2').css('color', '#a0a0a0');
+        $('#install-step-3').css('color', 'white');
+        $('#install-content').replaceWith(response.html);
+        $('#step-button').click(get_step_4);
+      } else {
+        $('#step-title').after(response.html)
+        $('#db-alert').fadeOut(5000)
+      }
+    }
+  })
+}
+
+function get_step_4() {
+  var admin_config = {
+    'username': $('#username').val(),
+    'password': $('#password').val(),
+    'email': $('#email').val()
+  }
+  $.ajax({
+    url: '/install',
+    type: 'post',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      'request_type': 'refresh_step_page',
+      'current_step': 3,
+      'admin_config': admin_config
+    }),
+    success: function(response){
+      if (response.status) {
+        $('#install-step-3').css('color', '#a0a0a0');
+        $('#install-step-4').css('color', 'white');
+        $('#install-content').replaceWith(response.html);
+      } else {
+        $('#step-title').after(response.html)
+        $('#admin-alert').fadeOut(5000)
+      }
+    }
+  })
+}
+
+$(document).ready(function(){
+  var $step_btn = $('#step-button');
+  $step_btn.click(get_step_2);
+})
+</script>
+{% endblock %}

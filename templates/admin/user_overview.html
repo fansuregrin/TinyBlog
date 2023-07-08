@@ -1,0 +1,9 @@
+<div class="col" id="user-overview">
+    <h3>User Overview</h3>
+    <p>There are currently <b>{{ users|length }}</b> users in your system.</p>
+    <ul>
+      {% for user in users %}
+      <li>{{ user.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>

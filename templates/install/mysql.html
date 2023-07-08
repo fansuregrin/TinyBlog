@@ -1,0 +1,38 @@
+<div class="mb-3" id="db-config">
+    <div class="was-validated">
+        <label for="dbAddress" class="form-label">Database address</label>
+        <input type="text" id="dbAddress" class="form-control" aria-labelledby="dbAddressHelpBlock" required>
+        <div id="dbAddressHelpBlock" class="form-text invalid-feedback">
+            Your database address, syntax must be <b>'hostname:port'</b>.
+        </div>
+    </div>
+    <div class="was-validated">
+        <label for="dbUsername" class="form-label">Database username</label>
+        <input type="text" id="dbUsername" class="form-control" aria-labelledby="dbUsernameHelpBlock" required>
+        <div id="dbUsernameHelpBlock" class="form-text invalid-feedback">
+            Your database username, maybe 'root'.
+        </div>
+    </div>
+    <div class="was-validated">
+        <label for="dbPassword" class="form-label">Database password</label>
+        <input type="password" id="dbPassword" class="form-control" aria-labelledby="dbPasswordeHelpBlock" required>
+        <div id="dbPasswordHelpBlock" class="form-text invalid-feedback">
+            Your database password.
+        </div>
+    </div>
+    <div class="was-validated">
+        <label for="dbName" class="form-label">Database name</label>
+        <input type="text" id="dbName" class="form-control" aria-labelledby="dbNameHelpBlock" required>
+        <div id="dbNameHelpBlock" class="form-text invalid-feedback">
+            Your database name.
+        </div>
+    </div>
+    <div class="was-validated">
+        <label for="dbCharset" class="form-label">Database charset</label>
+        <input type="text" id="dbCharset" class="form-control" aria-labelledby="dbCharsetHelpBlock" value="utf8mb4"
+            required>
+        <div id="dbCharsetHelpBlock" class="form-text invalid-feedback">
+            Your database charset.
+        </div>
+    </div>
+</div>

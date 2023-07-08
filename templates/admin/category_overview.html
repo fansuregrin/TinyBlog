@@ -1,0 +1,9 @@
+<div class="col" id="category-overview">
+  <h3>Category Overview</h3>
+  <p>There are currently <b>{{ categories|length }}</b> categories in your system.</p>
+  <ul>
+    {% for category in categories %}
+    <li>{{ category.name }}</li>
+    {% endfor %}
+  </ul>
+</div>

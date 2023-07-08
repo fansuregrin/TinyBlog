@@ -1,0 +1,16 @@
+{% extends 'admin/my_master.html' %}
+
+
+{% block body %}
+<h2>Blog Overview</h2>
+<div class="col my-3">
+  <p>Welcome to <b>TinyBlog</b>! This is the administration interface for TinyBlog where you can create, modify, and delete
+    your articles. You can add different tags and categories to your articles, and collaborate with other users to write
+    articles.</p>
+</div>
+{% for overview_info_pair in overview_info_list %}
+<div class="row" id="overview_info">
+  {{ overview_info_pair | safe }}
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="col" id="post-overview">
+  <h3>Posts Overview</h3>
+  <p>There are currently <b>{{ count }}</b> posts in your system.</p>
+  <div>
+    <h4>Recently Published Posts</h4>
+    <ul>
+      {% for post in posts %}
+      <li><a href="{{ url_for('blog.post_detail', slug=post.slug) }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

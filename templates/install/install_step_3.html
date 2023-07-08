@@ -1,0 +1,27 @@
+<div class="container" id="install-content">
+  <div class="col-9 mb-3" id="step-text">
+    <h2 class="mb-3" id="step-title">Set your admin account</h2>
+    <div class="was-validated">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" class="form-control" aria-labelledby="usernameHelpBlock" required>
+      <div id="usernameHelpBlock" class="form-text invalid-feedback">
+        Please fill in your admin username.
+      </div>
+    </div>
+    <div class="was-validated">
+      <label for="password" class="form-label">Login Password</label>
+      <input type="password" id="password" class="form-control" aria-labelledby="passwordHelpBlock" required>
+      <div id="passwordHelpBlock" class="form-text invalid-feedback">
+        Please fill in your password. The password should not be less than 6 characters and can include numbers, letters and special characters. If left blank or blank characters in it, the system will automatically generate a random password for you!
+      </div>
+    </div>
+    <div class="was-validated">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" id="email" class="form-control" aria-labelledby="emailHelpBlock" required>
+      <div id="emailHelpBlock" class="form-text invalid-feedback">
+        Please fill in your email address.
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" id="step-button" name="step" value="3">Next step &raquo;</button>
+</div>
